@@ -370,3 +370,34 @@ nav .fa-solid{
     margin-top: -40px;
     display: block;
 }
+#starsCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Prevents interaction */
+    z-index: -1; /* Behind content */
+    background: black; /* Ensures dark space */
+}
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: translateY(0px); }
+    50% { opacity: 1; transform: translateY(-2px); }
+}
+.star {
+    position: absolute;
+    background: white;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0.3;
+    animation: twinkle 3s infinite ease-in-out alternate;
+}
+@keyframes pulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+}
+
+.image-container {
+    animation: pulse 2s infinite alternate;
+}
