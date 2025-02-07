@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <script src="main.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4c86e3eced.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images\logo.png" alt="My Logo Goes Here" id="logo">
+                <ul>
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Web Developer</p>
+                <h2>Hi, I am Rajesh Mundhe <br>from India</h2>
+            </div>
+        </div>
+    </div>
+    <div id="#about">
+        <div class="container"></div>
+        <div class="row">
+            <div class="about-col-1">
+                <img src="images/meforabout.jpg" alt="just another pic of me :D">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title">About Me</h1>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Libero maxime quibusdam culpa veritatis obcaecati esse minus nulla enim reiciendis laborum dolorem quam deserunt voluptatibus fugiat magni molestiae, quidem molestias minima.</p>
+                <div class="tab-titles">
+                    <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                </div>
+                <div class="tab-contents active-tab" id="skills">
+                    <ul>
+                        <li><span>UI/UX</span><br />Designing web/app interfaces</li>
+                        <li><span>Web Development</span><br />web app development</li>
+                        <li><span>Machine Learning</span><br />creating machine learning models</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="experience">
+                    <ul>
+                        <li><span>Jan 2024 - Current</span><br />SIAM-VIT Core Member</li>
+                        <li><span>smth</span><br />smth</li>
+                        <li><span>smth</span><br />smth</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="education">
+                    <ul>
+                        <li><span>Current</span><br />Btech CSE (AI/ML) VIT Vellore</li>
+                        <li><span>2023</span><br />passed 12th grade</li>
+                        <li><span>smth</span><br />smth</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="services">
+        <div class="container"></div>
+        <h1 class="sub-title">My services</h1>
+        <div class="services-list">
+          <div>
+            <i class="fa-solid fa-pen-nib"></i>
+            <h2>Web Design</h2>
+            <p>
+              I create clean, responsive, and visually captivating websites that
+              prioritize user experience and brand identity. With a focus on
+              modern aesthetics and functionality, I ensure your website not only
+              looks great but also performs seamlessly across all devices. Let’s
+              build a digital space that truly represents your vision!
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-code"></i>
+            <h2>Web Development</h2>
+            <p>
+              I bring designs to life with clean, efficient, and scalable code.
+              From interactive user interfaces to robust backend solutions, I
+              craft websites that are not only visually appealing but also highly
+              functional. Let’s turn your ideas into a dynamic online presence!
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+          <div>
+            <i class="fa-solid fa-computer"></i>
+            <h2>Machine Learning</h2>
+            <p>
+              Harnessing the power of data to build intelligent solutions that
+              adapt and evolve. I develop machine learning models tailored to
+              solve real-world problems, enabling predictive insights, automation,
+              and smarter decision-making. Let’s innovate together with the power
+              of AI!
+            </p>
+            <a href="#">Learn More</a>
+          </div>
+        </div>
+    </div>
+    <div id="portfolio">
+        <div class="container">
+          <h1 class="sub-title">My work</h1>
+          <div class="work-list">
+            <div class="work">
+              <img src="images/1.jpeg" />
+              <div class="layer">
+                <h3>Social Media Apps</h3>
+                <p>
+                  Cloned a lot of famous social media apps and added functional
+                  features to make it better than it already is!
+                </p>
+                <a href="#"
+                  ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </div>
+            </div>
+            <div class="work">
+              <img src="images/2.jpeg" />
+              <div class="layer">
+                <h3>Portfolio Website</h3>
+                <p>
+                  This is the project you are currently looking. I hope I can add
+                  more genuine work on my own website.
+                </p>
+                <a href="#"
+                  ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </div>
+            </div>
+  
+            <div class="work">
+              <img src="images/3.jpeg" />
+              <div class="layer">
+                <h3>Gaming Website</h3>
+                <p>
+                  It is a collection of all the js games you can find on
+                  internet.I hope my logic building skills get better.
+                </p>
+                <a href="#"
+                  ><i class="fa-solid fa-arrow-up-right-from-square"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="btn">See more</a>
+        </div>
+    </div>
+    
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname) {
+          for (let tablink of tablinks) {
+            tablink.classList.remove("active-link");
+          }
+          for (let tabcontent of tabcontents) {
+            tabcontent.classList.remove("active-tab");
+          }
+          event.currentTarget.classList.add("active-link");
+          document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+</body>
+</html>
