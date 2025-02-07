@@ -183,6 +183,140 @@
             <p>&copy; 2025 Rajesh Mundhe. All rights reserved.</p>
         </div>
     </div>
+    <canvas id="starsCanvas"></canvas>
+    <script>
+      const canvas = document.getElementById("starsCanvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let stars = [];
+let meteors = [];
+let mouseX = canvas.width / 2;
+let mouseY = canvas.height / 2;
+
+// Create random stars
+for (let i = 0; i < 150; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        radius: Math.random() * 2,
+        opacity: Math.random(),
+        speed: Math.random() * 0.5 + 0.1,
+        baseX: 0,  // Store original position
+        baseY: 0
+    });
+}
+
+// Assign base positions
+stars.forEach(star => {
+    star.baseX = star.x;
+    star.baseY = star.y;
+});
+
+// Function to draw stars
+function drawStars() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let star of stars) {
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+        ctx.fill();
+        ctx.closePath();
+
+        // Twinkling effect
+        star.opacity += (Math.random() - 0.5) * 0.05;
+        star.opacity = Math.max(0.1, Math.min(star.opacity, 1));
+
+        // Slow movement
+        star.y += star.speed;
+        if (star.y > canvas.height) star.y = 0;
+
+        // Parallax effect (stars move slightly towards mouse)
+        let dx = (mouseX - canvas.width / 2) * 0.02;
+        let dy = (mouseY - canvas.height / 2) * 0.02;
+        star.x = star.baseX + dx;
+        star.y = star.baseY + dy;
+    }
+}
+const numStars = 100;
+const container = document.querySelector(".star-container");
+
+for (let i = 0; i < numStars; i++) {
+    let star = document.createElement("div");
+    star.className = "star";
+    star.style.top = Math.random() * window.innerHeight + "px";
+    star.style.left = Math.random() * window.innerWidth + "px";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    container.appendChild(star);
+}
+
+// Create a meteor
+function createMeteor() {
+    meteors.push({
+        x: Math.random() * canvas.width,
+        y: 0,
+        length: Math.random() * 80 + 50,
+        speed: Math.random() * 5 + 2,
+        opacity: Math.random() * 0.5 + 0.3
+    });
+}
+
+// Function to draw meteors
+function drawMeteors() {
+    for (let i = 0; i < meteors.length; i++) {
+        let m = meteors[i];
+        ctx.beginPath();
+        ctx.moveTo(m.x, m.y);
+        ctx.lineTo(m.x + m.length * 0.5, m.y + m.length);
+        ctx.strokeStyle = `rgba(255, 255, 255, ${m.opacity})`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.closePath();
+
+        // Move meteor
+        m.x += m.speed * 0.5;
+        m.y += m.speed;
+
+        // Remove if out of screen
+        if (m.y > canvas.height) {
+            meteors.splice(i, 1);
+        }
+    }
+}
+window.addEventListener("scroll", function () {
+    let scrollValue = window.scrollY;
+    document.querySelector(".image-container").style.transform = `translateY(${scrollValue * 0.2}px)`;
+    document.querySelector(".star-container").style.transform = `translateY(${scrollValue * 0.1}px)`;
+});
+
+// Mouse move listener for parallax effect
+window.addEventListener("mousemove", (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+// Animate everything
+function animate() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    drawStars();
+    drawMeteors();
+    requestAnimationFrame(animate);
+}
+
+// Adjust canvas size on resize
+window.addEventListener("resize", () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+});
+
+// Start animation
+animate();
+setInterval(createMeteor, 2000); // A meteor appears every 2 sec
+
+    </script>
     <script>
         var tablinks = document.getElementsByClassName("tab-links");
         var tabcontents = document.getElementsByClassName("tab-contents");
