@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Gradient Background</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden;
+            background: black;
+        }
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: block;
+        }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="text">Rajesh Mundhe</div>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particles = [];
+        const colors = ["#ff00ff",  "#8a2be2", "#1e90ff"];
+
+        class Particle {
+            constructor(x, y, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.radius = radius;
+                this.color = color;
+                this.vx = (Math.random() - 0.5) * 2;
+                this.vy = (Math.random() - 0.5) * 2;
+            }
+            draw() {
+                ctx.beginPath();
+                let gradient = ctx.createRadialGradient(this.x, this.y, this.radius * 0.5, this.x, this.y, this.radius * 2);
+                gradient.addColorStop(0, this.color);
+                gradient.addColorStop(1, "rgba(0,0,0,0)"); // This may cause white/transparency issues
+                ctx.fillStyle = gradient;
+                ctx.arc(this.x, this.y, this.radius * 2, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.closePath();
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x - this.radius * 2 < 0 || this.x + this.radius * 2 > canvas.width) this.vx *= -1;
+                if (this.y - this.radius * 2 < 0 || this.y + this.radius * 2 > canvas.height) this.vy *= -1;
+            }
+        }
+
+        function init() {
+            particles = [];
+            for (let i = 0; i < 30; i++) {
+                let radius = Math.random() * 150 + 100;
+                let x = Math.random() * canvas.width;
+                let y = Math.random() * canvas.height;
+                let color = colors[Math.floor(Math.random() * colors.length)];
+                particles.push(new Particle(x, y, radius, color));
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.globalCompositeOperation = "lighter";
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            init();
+        });
+
+        window.addEventListener("mousemove", (event) => {
+            particles.forEach(particle => {
+                let dx = particle.x - event.clientX;
+                let dy = particle.y - event.clientY;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 250) {
+                    particle.vx += dx * 0.002;
+                    particle.vy += dy * 0.002;
+                }
+            });
+        });
+
+        init();
+        animate();
+    </script>
+</body>
+</html>
