@@ -1,50 +1,57 @@
-*{ 
+* { 
     margin: 0;
     padding: 0;
-    font-family: "Poppins","sans-serif";
+    font-family: "Poppins", sans-serif;
     box-sizing: border-box;
-}
-html{
-    scroll-behavior: smooth;
-}
-body{
+  }
+  html { scroll-behavior: smooth; }
+  body {
     background-color: black;
     color: white;
-}
-#header{
+  }
+  /* === Header Section with Parallax & Fade === */
+  #header {
     position: relative;
-    background-attachment: fixed;
+    background-attachment: fixed; /* Parallax base */
     width: 100%;
     height: 100vh;
     background-image: url(images/bg.jpg);
     background-size: cover;
     background-position: center;
-}
-.container{
+  }
+  /* Fade the header into the black area */
+  #header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Adjust for the fade length */
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, black 100%);
+  }
+  .container {
     padding: 10px 10%;
-}
-#logo{
-    width: 170px;
-}
-nav{
+  }
+  #logo { width: 170px; }
+  nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-}
-nav ul li{
+  }
+  nav ul li {
     display: inline-block;
-    list-style: name;
+    list-style: none;
     margin: 10px 20px;
-}
-nav ul li a{
+  }
+  nav ul li a {
     color: black;
     text-decoration: none;
     font-size: 23px;
     font-weight: bold;
     position: relative;
-}
-nav ul li a::after{
+  }
+  nav ul li a::after {
     content: "";
     width: 0;
     height: 3px;
@@ -53,79 +60,70 @@ nav ul li a::after{
     position: absolute;
     bottom: -6px;
     transition: 0.5s;
-}
-nav ul li a:hover::after{
+  }
+  nav ul li a:hover::after {
     width: 100%;
-}
-.header-text{
+  }
+  .header-text {
     margin-top: 20%;
     font-size: 30px;
-}
-.header-text h2{
+  }
+  .header-text h2 {
     font-size: 60px;
     color: rgb(255, 255, 255);
-}
-
-/*About Me*/
-
-#about{
+  }
+  /* === About Me Section === */
+  #about {
     color: #ababab;
     padding: 80px 0;
-}
-.row{
+  }
+  .row {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     font-size: large;
     padding: 0 10%;
-}
-.about-col-1{
+  }
+  .about-col-1 {
     flex-basis: 35%;
     display: flex;
     justify-content: center;
-}
-.about-col-1 img{
+  }
+  .about-col-1 img {
     width: 100%;
     max-width: 500px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    align-items: center;
-}
-.about-col-2{
-    flex-basis: 60%;
-}
-.sub-title{
+  }
+  .about-col-2 { flex-basis: 60%; }
+  .sub-title {
     color: white;
     font-size: 60px;
     font-weight: bold;
-}
-.tab-titles{
+  }
+  .tab-titles {
     display: flex;
     margin: 20px 0 40px;
-}
-.tab-links{
+  }
+  .tab-links {
     margin-right: 50px;
     font-size: 25px;
     font-weight: 500;
     cursor: pointer;
     position: relative;
-}
-.tab-contents ul li {
+  }
+  .tab-contents ul li {
     list-style-type: none;
     margin: 10px 0;
     font-size: 18px;
-}
-.tab-contents ul li span{
+  }
+  .tab-contents ul li span {
     color:#2491f7;
     font-size: 25px;
-}
-.tab-contents {
-    display: none;
-}
-.tab-contents.active-tab {
-    display: block;
-}
-.tab-links::after {
+  }
+  .tab-contents { display: none; }
+  .tab-contents.active-tab { display: block; }
+  .tab-links::after {
     content: "";
     width: 0;
     height: 3px;
@@ -134,76 +132,65 @@ nav ul li a:hover::after{
     left: 0;
     bottom: -8px;
     transition: 0.5s;
-}
-.tab-links.active-link::after {
-    width: 50%;
-}
-#services {
-    padding: 10px 100px;
-}
-.services-list {
+  }
+  .tab-links.active-link::after { width: 50%; }
+  /* === Services Section === */
+  #services { padding: 10px 100px; }
+  .services-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 40px;
     margin-top: 50px;
-}
-.services-list div {
+  }
+  .services-list div {
     background-color: #262626;
     padding: 40px;
     font-size: 13px;
     font-weight: 300;
     border-radius: 10px;
     transition: background 0.5s, transform 0.5s;
-}
-.services-list div i {
+  }
+  .services-list div i {
     font-size: 50px;
     margin-bottom: 30px;
-}
-.services-list div p {
-    font-size: 15px;
-}
-.services-list div h2 {
+  }
+  .services-list div p { font-size: 15px; }
+  .services-list div h2 {
     margin-bottom: 20px;
     font-size: 30px;
     font-weight: 500;
-}
-.services-list div a {
+  }
+  .services-list div a {
     text-decoration: none;
     color: #fff;
     font-size: 12px;
     margin-top: 20px;
     display: inline-block;
-}
-.services-list div:hover {
+  }
+  .services-list div:hover {
     background-color: #2491f7;
     transform: translateY(-10px);
-}
-#portfolio {
-    padding: 50px 0;
-}
-.work-list {
+  }
+  /* === Portfolio Section === */
+  #portfolio { padding: 50px 0; }
+  .work-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     grid-gap: 40px;
     margin-top: 50px;
-}
-/* .work-list img{
-    width:100%;
-    height:auto;
-    object-fit:cover;
-} */
-.work {
+  }
+  .work {
     border-radius: 10px;
     position: relative;
     overflow: hidden;
-}
-.work img {
+  }
+  .work img {
     width: 100%;
     border-radius: 10px;
     display: block;
     transition: transform 0.5s;
-}
-.layer {
+  }
+  .layer {
     width: 100%;
     height: 0%;
     background: linear-gradient(rgba(0, 0, 0, 0.6), #2491f7);
@@ -219,12 +206,12 @@ nav ul li a:hover::after{
     padding: 0 40px;
     text-align: center;
     transition: height 0.5s;
-}
-.layer h3 {
+  }
+  .layer h3 {
     font-weight: 500;
     margin-bottom: 20px;
-}
-.layer a {
+  }
+  .layer a {
     margin-top: 20px;
     color: #2491f7;
     font-size: 18px;
@@ -233,14 +220,10 @@ nav ul li a:hover::after{
     width: 40px;
     height: 40px;
     border-radius: 50%;
-}
-.work:hover img {
-    transform: scale(1.1);
-}
-.work:hover .layer {
-    height: 100%;
-}
-.btn {
+  }
+  .work:hover img { transform: scale(1.1); }
+  .work:hover .layer { height: 100%; }
+  .btn {
     display: block;
     margin: 50px auto;
     width: fit-content;
@@ -250,141 +233,113 @@ nav ul li a:hover::after{
     color: #2491f7;
     text-decoration: none;
     transition: background 0.5s;
-}
-.btn:hover{
+  }
+  .btn:hover {
     background-color: #2491f7;
     color: #fff;
-}
-
-
-.contact-left p {
-    font-size:30px;
+  }
+  /* === Contact Section === */
+  .contact-left p {
+    font-size: 30px;
     margin-top: 10px;
-}
-
-.contact-left p i{
+  }
+  .contact-left p i {
     color: #2491f7;
     margin-right: 15px;
-    font-size: 20px;;
-
-}
-.social-icons{
-    margin-top:30px;
-}
-    
-.social-icons a{
+    font-size: 20px;
+  }
+  .social-icons {
+    margin-top: 30px;
+  }
+  .social-icons a {
     text-decoration: none;
     font-size: 30px;
     margin-right: 15px;
     color: #ababab;
     display: inline-block;
     transition: transform 0.5s;
-
-}
-
-.social-icons a:hover{
-    color:#2491f7;
+  }
+  .social-icons a:hover {
+    color: #2491f7;
     transform: translateY(-5px);
-}
-
-.btn.btn2{
-    display:inline-block;
+  }
+  .btn.btn2 {
+    display: inline-block;
     background-color: #2491f7;
     color: #fff;
-}
-
-.copyright{
-    width:100%;
+  }
+  .copyright {
+    width: 100%;
     text-align: center;
-    padding:10px 0;
+    padding: 10px 0;
     background-color: #262626;
     font-weight: 300;
     margin-top: 20px;
-
-}
-
-/* css for smaller screen */
-
-nav .fa-solid{
-    display:none;
-}
-@media only screen and (max-width:600px) {
-    #header{
-        background-image: url(Images/mobile_background.png);
-    }   
-    .header-text{
-        margin-top: 50%;
-        font-size: 16px;
+  }
+  /* === Responsive Styles === */
+  nav .fa-solid { display: none; }
+  @media only screen and (max-width:600px) {
+    #header {
+      background-image: url(Images/mobile_background.png);
     }
-    .header-text h1{
-        font-size: 30px;
+    .header-text {
+      margin-top: 50%;
+      font-size: 16px;
     }
-    nav .fa-solid{
-        display:block;
-        font-size:25px;
+    .header-text h1 { font-size: 30px; }
+    nav .fa-solid {
+      display: block;
+      font-size: 25px;
     }
-    nav ul{
-        background-color: #2491f7;
-        position: fixed;
-        top: 0;
-        right:-200px ;
-        width: 200px;
-        height: 100vh;
-        padding-top: 50px;
-        z-index: 2;
-        transition: right 0.5s;
-        
+    nav ul {
+      background-color: #2491f7;
+      position: fixed;
+      top: 0;
+      right: -200px;
+      width: 200px;
+      height: 100vh;
+      padding-top: 50px;
+      z-index: 2;
+      transition: right 0.5s;
     }
-    nav ul li{
-        display: block;
-        margin: 25px;
+    nav ul li {
+      display: block;
+      margin: 25px;
     }
-    nav ul .fa-solid{
-        position: absolute;
-        top: 25px;
-        left: 25px;
-        cursor: pointer;
+    nav ul .fa-solid {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      cursor: pointer;
     }
-    .sub-title{
-        font-size: 40px;;
-    }
-    .about-col-1 , .about-col-2{
-        flex-basis: 100%;
-    }
-    .about-col-1{
-        margin-bottom: 30px;
-    }
-    .about-col-2{
-         font-size: 14px;
-    }
-    .tab-links{
-        font-size: 16px;
-        margin-right: 20px;
-    }
-   .contact-left , .contact-right{
-    flex-basis: 100%;
-   }
-}
-#msg{
+    .sub-title { font-size: 40px; }
+    .about-col-1, .about-col-2 { flex-basis: 100%; }
+    .about-col-1 { margin-bottom: 30px; }
+    .about-col-2 { font-size: 14px; }
+    .tab-links { font-size: 16px; margin-right: 20px; }
+    .contact-left, .contact-right { flex-basis: 100%; }
+  }
+  #msg {
     color: #2491f7;
     margin-top: -40px;
     display: block;
-}
-#starsCanvas {
+  }
+  /* === Stars & Meteors Canvas Styles === */
+  #starsCanvas {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Prevents interaction */
-    z-index: -1; /* Behind content */
-    background: black; /* Ensures dark space */
-}
-@keyframes twinkle {
+    pointer-events: none; /* Allows clicks through the canvas */
+    z-index: -1;
+    background: black;
+  }
+  @keyframes twinkle {
     0%, 100% { opacity: 0.3; transform: translateY(0px); }
     50% { opacity: 1; transform: translateY(-2px); }
-}
-.star {
+  }
+  .star {
     position: absolute;
     background: white;
     width: 2px;
@@ -392,12 +347,81 @@ nav .fa-solid{
     border-radius: 50%;
     opacity: 0.3;
     animation: twinkle 3s infinite ease-in-out alternate;
-}
-@keyframes pulse {
-    0%, 100% { filter: brightness(1); }
-    50% { filter: brightness(1.2); }
+  }
+ 
+/* Black hole container */
+#blackhole {
+  position: relative; /* Ensures it stays in the document flow */
+  margin: 50px auto; /* Adds spacing between Contact Me and Footer */
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, black 40%, rgba(0, 0, 0, 0.6) 70%, rgba(0, 0, 0, 0) 100%);
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: spin 10s linear infinite;
+  cursor: pointer;
 }
 
-.image-container {
-    animation: pulse 2s infinite alternate;
+/* Centering */
+.blackhole-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* Stars orbiting the black hole */
+.stars-orbit {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.star {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: white;
+  border-radius: 50%;
+  animation: orbit 5s linear infinite;
+}
+
+/* Page warp effect */
+.page-warp {
+  animation: collapseIntoSingularity 1.5s ease-in-out forwards;
+}
+
+/* Rotating effect */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Orbit effect */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(90px) rotate(0deg); }
+  to { transform: rotate(360deg) translateX(90px) rotate(-360deg); }
+}
+
+/* Page singularity warp animation */
+@keyframes collapseIntoSingularity {
+  0% {
+      transform: scale(1);
+      filter: blur(0);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(0.5);
+      filter: blur(5px);
+      opacity: 0.8;
+  }
+  100% {
+      transform: scale(0);
+      filter: blur(10px);
+      opacity: 0;
+  }
 }
